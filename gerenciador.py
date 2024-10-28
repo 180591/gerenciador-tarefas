@@ -8,7 +8,7 @@
 banco_de_dados = []
 
 def adicionar_tarefa():
-  # Construir um dicionário com dados do usuário e inserir no banco de dados que é uma lista
+
   tarefa = {
       'Nome': input("Digite o nome da tarefa: "),
       'Descrição': input("Digite a descrição da tarefa: "),
@@ -22,16 +22,14 @@ def adicionar_tarefa():
   print("-------------------------")
 
 def listar_tarefas():
-  # Percorra a lista banco_de_dados, recuperando um dicionário (tarefa) por vez
-  # Em seguida, percorra o dicionário para imprimir os pares de chave/valor
+
   for tarefa_cadastrada in banco_de_dados:
     for chave, valor in tarefa_cadastrada.items():
       print(f"{chave}: {valor}")
     print("-------------------------")
 
 def listar_prioridade():
-  # Percorra a lista de banco_de_dados, recuperando um dicionário (tarefa) por vez
-  # Em seguida, percorra o dicionário para imprimir as tarefas por prioridade.
+
   prioridade = int(input('Digite a prioridade (1 - 5): '))
   for tarefa_cadastrada in banco_de_dados:
     if tarefa_cadastrada['Prioridade'] == prioridade:
@@ -40,8 +38,7 @@ def listar_prioridade():
       print("-------------------------")
 
 def listar_categoria():
-  # Percorra a lista de banco_de_dados, recuperando um dicionário (tarefa) por vez
-  # Em seguida, percorra o dicionário para imprimir as tarefas por categoria.
+  
   categoria = str(input('Digite a categoria: '))
   for tarefa_cadastrada in banco_de_dados:
     if tarefa_cadastrada['Categoria'] == categoria:
@@ -50,24 +47,22 @@ def listar_categoria():
       print("-------------------------")
 
 def editar_tarefas():
-  # Procurar a tarefa que o usuário requisitar o nome
-  # Percorrer banco_de_dados para encontrar a tarefa pelo nome passado
-  # Ao encontrar a tarefa, requisitar um novo nome para a tarefa
-
+  
   edicao = input("Digite o nome da tarefa a ser editada: ")
-  for tarefa_cadastrada in banco_de_dados:
-    if tarefa_cadastrada['Nome'] == edicao:
-      novo_nome = input("Digite o novo nome da tarefa: ")
-      tarefa_cadastrada['Nome'] = novo_nome
-      print("NOME DA TAREFA EDITADO COM SUCESSO!")
-    print("-------------------------")
+  editar = input('Tem certeza que deseja editar essa tarefa? [S/N] ')
+  if editar in 'Ss':
+    for tarefa_cadastrada in banco_de_dados:
+      if tarefa_cadastrada['Nome'] == edicao:
+        novo_nome = input("Digite o novo nome da tarefa: ")
+        tarefa_cadastrada['Nome'] = novo_nome
+        print("NOME DA TAREFA EDITADO COM SUCESSO!")
+  else:
+    print('TAREFA NÃO EDITADA')
+  print("-------------------------")
 
     
 def deletar_tarefas():
-  # Procurar a tarefa que o usuário requisitar o nome
-  # Percorrer banco_de_dados para encontrar a tarefa pelo nome passado
-  # Ao encontrar a tarefa, remover o item de banco_de_dados
-
+  
   nome_delete = input("Digite o nome da tarefa que deseja deletar: ")
   deletar = input('Tem certeza que deseja deletar essa tarefa? [S/N] ')
   if deletar in 'Ss':
@@ -80,10 +75,7 @@ def deletar_tarefas():
   print("-------------------------")
 
 def concluir_tarefa():
-  # Procurar a tarefa que o usuário requisitar o nome
-  # Percorrer banco_de_dados para encontrar a tarefa
-  # Ao encontrar a tarefa, marcar como concluída
-
+  
   tarefa = input('Digite o NOME da tarefa que você deseja marcar como concluída: ')
   for tarefa_cadastrada in banco_de_dados:
     if tarefa_cadastrada['Nome'] == tarefa:
@@ -93,8 +85,9 @@ def concluir_tarefa():
       print(f'Não existe tarefa com o nome {tarefa}.')
   print("-------------------------")
     
-
+print('=-=' * 7)
 print("BEM-VINDO AO GT v1.0")
+print('=-=' * 7)
 
 while True:
   print("O QUE DESEJA FAZER HOJE?")
@@ -131,3 +124,7 @@ while True:
   
   elif op == 8:
     break
+
+print('=-=' * 9)  
+print('OBRIGADO!!! VOLTE SEMPRE!!!')
+print('=-=' * 9)
